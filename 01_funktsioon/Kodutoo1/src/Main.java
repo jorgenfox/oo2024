@@ -21,9 +21,9 @@ public class Main {
         prindiForTsykkel("Pikk sõna");
         prindiForTsykkel("Lüh");*/
 
-        boolean check1 = jahVoiEi("oige");
+        String check1 = jahVoiEi(true);
         System.out.println(check1);
-        boolean check2 = jahVoiEi("vale");
+        String check2 = jahVoiEi(false);
         System.out.println(check2);
 
         int sum = printSum(1,3);
@@ -31,8 +31,8 @@ public class Main {
         int sum2 = printSum(100,43);
         System.out.println(sum2);
 
-        printMessage("tere");
-        printMessage("headaega");
+        printMessageLoop(2, false);
+        printMessageLoop(213, true);
     }
 
     /*private static double arvutaTaksoMaksumus(int tunnid) {
@@ -52,15 +52,25 @@ public class Main {
         }
     }*/
 
-    private static boolean jahVoiEi(String check){
-        return check.equals("oige");
+    private static String jahVoiEi(boolean check){
+        if (check) {
+            return "oige";
+        } else {
+            return "vale";
+        }
+
     }
 
     public static int printSum(int num1, int num2) {
         return num1 + num2;
     }
 
-    public static void printMessage(String message) {
-        System.out.println(message);
+    public static void printMessageLoop(int number, boolean yesno) {
+        if (yesno)
+            for (int i = 0; i < number; i++) {
+                System.out.println(i);
+            } else {
+            System.out.println("Sisend oli puudulik");
+        }
     }
 }
