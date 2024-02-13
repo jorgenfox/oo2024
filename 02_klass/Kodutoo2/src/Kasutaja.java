@@ -18,8 +18,9 @@ public class Kasutaja {
         aktiivne = !aktiivne;
     }
 
-    public void lisaRaha(double summa) {
+    public double lisaRaha(double summa) {
         raha = raha + summa;
+        return raha;
     }
 
 }
