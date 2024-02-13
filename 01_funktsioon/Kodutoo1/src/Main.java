@@ -32,7 +32,7 @@ public class Main {
         System.out.println(sum2);
 
         printMessageLoop(2, false);
-        printMessageLoop(213, true);
+        printMessageLoop(13, true);
     }
 
     /*private static double arvutaTaksoMaksumus(int tunnid) {
@@ -66,10 +66,11 @@ public class Main {
     }
 
     public static void printMessageLoop(int number, boolean yesno) {
-        if (yesno)
+        if (yesno) {
             for (int i = 0; i < number; i++) {
                 System.out.println(i);
-            } else {
+            }
+        } else {
             System.out.println("Sisend oli puudulik");
         }
     }
