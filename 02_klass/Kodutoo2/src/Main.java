@@ -9,7 +9,7 @@ public class Main {
         // Mainis vahemalt 2 funktsiooni valjakutset
         // Vahemalt 2 System.out.println()
 
-        Kasutaja kasutaja = new Kasutaja("M", true, 20, 'x', 0.0);
+        /*Kasutaja kasutaja = new Kasutaja("M", true, 20, 'x', 0.0);
         Kasutaja kasutaja2 = new Kasutaja("S", false, 33, 'd', 499.0);
 
         kasutaja.muudaAktiivne();
@@ -24,7 +24,21 @@ public class Main {
         System.out.println(dollarites);
 
         tellimus2.tellijaNimeVahetus("Y");
-        System.out.println(tellimus2.tellija);
+        System.out.println(tellimus2.tellija);*/
 
+
+        Kursus tudeng1 = new Kursus("lotte123","OOP",1,false,80);
+        Kursus tudeng2 = new Kursus("tallinnaulikool","TTP",5,true,140);
+        Kursus tudeng3 = new Kursus("grinch","Tarkvara testimise alused",2,true,190);
+
+
+        tudeng1.muudaSemester(2);
+        System.out.println(tudeng1.semester);
+
+        tudeng2.muudaNews();
+        System.out.println(tudeng2.newsletter);
+
+        int paeviVeel = tudeng3.mituPaevaVeel(15);
+        System.out.println(paeviVeel);
     }
 }
