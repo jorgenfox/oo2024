@@ -5,6 +5,7 @@ public class Mangija {
     int yCoord; // rightclick -> refactor -> rename
     char symbol;
     Suund suund;
+    Ese ese; // klassikomplekt
 
     public Mangija(Random random, int kaardiKorgus, int kaardiLaius) {
         xCoord = saaKoordinaat(random, kaardiLaius); // initsialiseerin (annan esimest korda väärtuse)
@@ -25,13 +26,13 @@ public class Mangija {
                 if (yCoord > 1) yCoord--;
             }
             case ALLA -> {
-                if (yCoord < maailm.kaardiKorgus - 1) yCoord++;
+                if (yCoord < maailm.kaardiKorgus - 2) yCoord++;
             }
             case VASAKULE -> {
                 if (xCoord > 1) xCoord--;
             }
             case PAREMALE -> {
-                if (xCoord < maailm.kaardiLaius - 1) xCoord++;
+                if (xCoord < maailm.kaardiLaius - 2) xCoord++;
             }
         }
     } // <-- liigu() kinniminek
