@@ -40,7 +40,7 @@ public class ACounter {
             }
 
         } catch (FileNotFoundException e) {
-            System.err.println("File not found: " + fileName);
+            System.err.println("Faili ei leitud: " + fileName);
         }
     }
 
@@ -55,30 +55,30 @@ public class ACounter {
     }
 
     public void displayResults() {
-        System.out.println("Total 'a' count: " + totalACount);
-        System.out.println("Total words: " + totalWords);
-        System.out.println("Average 'a' count per word: " + averageACount);
-        System.out.println("Ratio of 'a's to total letters: " + ratioToTotalLetters);
-        System.out.println("Word count with respect to the number of 'a's:");
+        System.out.println("Kokku 'a' tähti: " + totalACount);
+        System.out.println("Kokku sõnu " + totalWords);
+        System.out.println("Keskmine 'a' arv sõnas: " + averageACount);
+        System.out.println("'a' suhe kõikide tähtedega:: " + ratioToTotalLetters);
+        System.out.println("Mitu 'a'-d sõnas esineb:");
         for (int i = 0; i <= 10; i++) {
             String charCount = (i == 10) ? "10" : " " + i;
-            System.out.printf("%2s 'A' in the word | %d%n", charCount, aList[i]);
+            System.out.printf("%2s 'a'-d sõnas | %d%n", charCount, aList[i]);
         }
     }
 
     public void writeResults(String outputFileName) {
         try (PrintWriter writer = new PrintWriter(outputFileName)) {
-            writer.println("Total 'a' count: " + totalACount);
-            writer.println("Total words: " + totalWords);
-            writer.println("Average 'a' count per word: " + averageACount);
-            writer.println("Ratio of 'a's to total letters: " + ratioToTotalLetters);
-            writer.println("Word count with respect to the number of 'a's:");
+            writer.println("Kokku 'a' tähti: " + totalACount);
+            writer.println("Kokku sõnu " + totalWords);
+            writer.println("Keskmine 'a' arv sõnas: " + averageACount);
+            writer.println("'a' suhe kõikide tähtedega:: " + ratioToTotalLetters);
+            writer.println("Mitu 'a'-d sõnas esineb:");
             for (int i = 0; i <= 10; i++) {
                 String charCount = (i == 10) ? "10" : " " + i;
-                writer.printf("%2s 'A' in the word | %d%n", charCount, aList[i]);
+                writer.printf("%2s 'a'-d sõnas | %d%n", charCount, aList[i]);
             }
         } catch (FileNotFoundException e) {
-            System.err.println("File writing error");
+            System.err.println("Faili kirjutamise error");
         }
     }
 }

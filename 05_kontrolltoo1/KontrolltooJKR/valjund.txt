@@ -1,16 +1,16 @@
-Total 'a' count: 286
-Total words: 583
-Average 'a' count per word: 0.49
-Ratio of 'a's to total letters: 0.08
-Word count with respect to the number of 'a's:
- 0 'A' in the word | 338
- 1 'A' in the word | 210
- 2 'A' in the word | 29
- 3 'A' in the word | 6
- 4 'A' in the word | 0
- 5 'A' in the word | 0
- 6 'A' in the word | 0
- 7 'A' in the word | 0
- 8 'A' in the word | 0
- 9 'A' in the word | 0
-10 'A' in the word | 0
+Kokku 'a' tähti: 286
+Kokku sõnu 583
+Keskmine 'a' arv sõnas: 0.49
+'a' suhe kõikide tähtedega:: 0.08
+Mitu sõna on kus 'a' esineb:
+ 0 'a'-d sõnas | 338
+ 1 'a'-d sõnas | 210
+ 2 'a'-d sõnas | 29
+ 3 'a'-d sõnas | 6
+ 4 'a'-d sõnas | 0
+ 5 'a'-d sõnas | 0
+ 6 'a'-d sõnas | 0
+ 7 'a'-d sõnas | 0
+ 8 'a'-d sõnas | 0
+ 9 'a'-d sõnas | 0
+10 'a'-d sõnas | 0
