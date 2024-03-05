@@ -1,0 +1,16 @@
+Total 'a' count: 286
+Total words: 583
+Average 'a' count per word: 0.49
+Ratio of 'a's to total letters: 0.08
+Word count with respect to the number of 'a's:
+ 0 'A' in the word | 338
+ 1 'A' in the word | 210
+ 2 'A' in the word | 29
+ 3 'A' in the word | 6
+ 4 'A' in the word | 0
+ 5 'A' in the word | 0
+ 6 'A' in the word | 0
+ 7 'A' in the word | 0
+ 8 'A' in the word | 0
+ 9 'A' in the word | 0
+10 'A' in the word | 0
