@@ -2,7 +2,7 @@ Kokku 'a' tähti: 286
 Kokku sõnu 583
 Keskmine 'a' arv sõnas: 0.49
 'a' suhe kõikide tähtedega:: 0.08
-Mitu sõna on kus 'a' esineb:
+Mitu 'a'-d sõnas esineb:
  0 'a'-d sõnas | 338
  1 'a'-d sõnas | 210
  2 'a'-d sõnas | 29
