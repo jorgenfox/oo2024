@@ -20,7 +20,7 @@ public class ACounter {
         aList = new int[11];
     }
 
-    public void countA(String fileName) {
+    public void fileRead(String fileName) {
         try (Scanner scanner = new Scanner(new File(fileName))) {
             while (scanner.hasNext()) {
                 String word = scanner.next();
