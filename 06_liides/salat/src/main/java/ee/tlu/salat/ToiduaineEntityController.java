@@ -60,4 +60,9 @@ public class ToiduaineEntityController {
     public ToiduaineEntity saaYksToiduaine(@PathVariable int index) {
         return toiduained.get(index);
     }
+
+    @GetMapping("toiduainete-koguarv")
+    public int toiduaineteKoguarv() {
+        return toiduained.size();
+    }
 }
