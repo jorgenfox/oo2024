@@ -2,51 +2,55 @@ package ee.tlu.kodutoo;
 
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api")
 public class NumberEntityController {
-    private List<NumberEntity> entities = new ArrayList<>();
+    NumberRepository numberRepository;
+
+    public NumberEntityController(NumberRepository numberRepository){
+        this.numberRepository = numberRepository;
+    }
 
     @GetMapping("entities")
     public List<NumberEntity> getAllEntities() {
-        return entities;
+        return numberRepository.findAll();
     }
 
-    @PostMapping("entities/{id}/{name}/{description}/{number}")
+    @PostMapping("entities/{name}/{description}/{number}")
     public List<NumberEntity> addEntity(
             @PathVariable String name,
             @PathVariable String description,
             @PathVariable int number
     ) {
         NumberEntity newentity = new NumberEntity(name, description, number);
-        entities.add(newentity);
-        return entities;
+        numberRepository.save(newentity);
+        return numberRepository.findAll();
     }
 
     @PutMapping("entities")
     public List<NumberEntity> updateEntity(
-            @RequestParam int index,
             @RequestParam String name,
             @RequestParam String description,
             @RequestParam int number
     ) {
         NumberEntity newentity = new NumberEntity(name, description, number);
-        entities.set(index, newentity);
-        return entities;
+        numberRepository.save(newentity); // tapselt sama, mis POST
+        // Hibernate kontrollib, kas on juba sellise primaarvotmega element andmebaasis
+        return numberRepository.findAll();
     }
 
-    @DeleteMapping("toiduained/{index}")
-    public List<NumberEntity> kustutaToiduaine(@PathVariable int index) {
-        entities.remove(index);
-        return entities;
+    @DeleteMapping("entities/{name}")
+    public List<NumberEntity> kustutaToiduaine(@PathVariable String name) {
+        numberRepository.deleteById(name);
+        return numberRepository.findAll();
     }
 
-    @GetMapping("/entities/sum")
+    @GetMapping("entities/sum")
     public int getEntitiesSum() {
         int sum = 0;
+        List<NumberEntity> entities = numberRepository.findAll();
         for (NumberEntity entity : entities) {
             sum += entity.number;
         }
