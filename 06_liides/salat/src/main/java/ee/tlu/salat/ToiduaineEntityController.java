@@ -6,19 +6,26 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
-@RequestMapping("/api")
+@RestController // kontroller EHK front-end saab siit ligi
+@RequestMapping("/api") // saan igale API otspunktile eesliidese panna
+@CrossOrigin(origins = "http://localhost:3000") // see ütleb, mis rakendus mulle ligi pääseb
 public class ToiduaineEntityController {
+    // ["Kartul", "Vorst"];
+    // [{nimi: "Kartul, valk: 0}, {nimi: "Vorst"}]
 
-    ToiduaineRepository toiduaineRepository;
+    //@Autowired
+    ToiduaineRepository toiduaineRepository; // ühendan Repository, et saaks ligi andmebaasi päringutele
+    //ToiduaineRepository toiduaineRepository = new ToiduaineRepository();
 
-    public ToiduaineEntityController(ToiduaineRepository toiduaineRepository){
+    // Dependency Injection
+    public ToiduaineEntityController(ToiduaineRepository toiduaineRepository) {
         this.toiduaineRepository = toiduaineRepository;
     }
 
 //    @Autowired
 //    ToiduaineRepository toiduaineRepository;
-    // List<ToiduaineEntity> toiduained = new ArrayList<>(); // imiteerime andmebaasi
+
+    //List<ToiduaineEntity> toiduained = new ArrayList<>();
 
     // localhost:8080/api/toiduained
     @GetMapping("toiduained")
@@ -26,10 +33,12 @@ public class ToiduaineEntityController {
         return toiduaineRepository.findAll();
     }
 
-    // localhost:8080/api/toiduained/Kartul/10/5/5
-    // ON jarjekord tahtis
-    // ma voin kogemata sassi ajada, muutes jarjekorda ja paneb valesti
-    // ma ei saa uhtegi vahele jatta
+    //localhost:8080/api/toiduained/Vorst/15/5/1
+    // ON järjekord tähtis
+    // Ma võin kogemata sassi ajada, muutes järjekorda ja paneb valesti
+    // Ma ei saa ühtegi vahele jätta
+
+    //localhost:8080/api/toiduained/Vorst/15/5/1
     @PostMapping("toiduained/{nimi}/{valk}/{rasv}/{sysivesik}")
     public List<ToiduaineEntity> lisaToiduaine(
             @PathVariable String nimi,
@@ -46,11 +55,11 @@ public class ToiduaineEntityController {
     }
 
     @PostMapping("toiduained")
-    public List<ToiduaineEntity> lisaToiduained(@RequestBody ToiduaineEntity toiduaineEntity) {
+    public List<ToiduaineEntity> lisaToiduaine(@RequestBody ToiduaineEntity toiduaineEntity) {
         if (toiduaineEntity.valk + toiduaineEntity.rasv + toiduaineEntity.sysivesik > 100) {
             return toiduaineRepository.findAll();
         }
-        // ToiduaineEntity toiduaine = new ToiduaineEntity(nimetus, valk, rasv, sysivesik);
+        //ToiduaineEntity toiduaine = new ToiduaineEntity(nimi, valk, rasv, sysivesik);
         toiduaineRepository.save(toiduaineEntity);
         return toiduaineRepository.findAll();
     }
@@ -61,18 +70,20 @@ public class ToiduaineEntityController {
         return toiduaineRepository.findAll();
     }
 
-    // localhost:8080/api/toiduained?index=0&nimi=Kartul&valk=10&rasv=5&sysivesik=5
-    // lubab mingil moel vahele jatta mingid vaartused
+    // localhost:8080/api/toiduained/Vorst/15/5/1 <-- PathVariable näide
+    // localhost:8080/api/toiduained?index=0&nimi=Vorst&valk=15&rasv=5&sysivesik=1
     @PutMapping("toiduained")
     public List<ToiduaineEntity> muudaToiduaine(
+            @RequestParam int index,
             @RequestParam String nimi,
             @RequestParam int valk,
             @RequestParam int rasv,
             @RequestParam int sysivesik
     ) {
         ToiduaineEntity toiduaine = new ToiduaineEntity(nimi, valk, rasv, sysivesik);
-        toiduaineRepository.save(toiduaine); // tapselt sama, mis POST
-        // Hibernate kontrollib, kas on juba sellise primaarvotmega element andmebaasis
+        //toiduained.set(index, toiduaine);
+        toiduaineRepository.save(toiduaine); // täpselt sama mis POST
+        // Hibernate kontrollib, kas on juba sellise primaarvõtmega element andmebaasis
         return toiduaineRepository.findAll();
     }
 
@@ -85,4 +96,5 @@ public class ToiduaineEntityController {
     public int toiduaineteKoguarv() {
         return toiduaineRepository.findAll().size();
     }
+
 }
