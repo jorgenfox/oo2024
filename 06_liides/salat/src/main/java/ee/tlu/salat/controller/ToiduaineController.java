@@ -1,4 +1,4 @@
-package ee.tlu.salat;
+package ee.tlu.salat.controller;
 
 
 import org.springframework.web.bind.annotation.*;
@@ -37,8 +37,7 @@ public class ToiduaineController {
     // PutMappingut ei saa brauser teha
     // localhost:8080/toiduained/0/Sink    PUT
     @PutMapping("toiduained/{index}/{newValue}")
-    public List<String> muudaToiduaine(@PathVariable int index,
-                                       @PathVariable String newValue) {
+    public List<String> muudaToiduaine(@PathVariable int index, @PathVariable String newValue) {
         toiduained.set(index, newValue);
         return toiduained;
     }

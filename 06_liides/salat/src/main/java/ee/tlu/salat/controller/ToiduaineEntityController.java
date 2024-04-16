@@ -1,9 +1,9 @@
-package ee.tlu.salat;
+package ee.tlu.salat.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import ee.tlu.salat.entity.ToiduaineEntity;
+import ee.tlu.salat.repository.ToiduaineRepository;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController // kontroller EHK front-end saab siit ligi
@@ -56,7 +56,7 @@ public class ToiduaineEntityController {
 
     @PostMapping("toiduained")
     public List<ToiduaineEntity> lisaToiduaine(@RequestBody ToiduaineEntity toiduaineEntity) {
-        if (toiduaineEntity.valk + toiduaineEntity.rasv + toiduaineEntity.sysivesik > 100) {
+        if (toiduaineEntity.getValk() + toiduaineEntity.getRasv() + toiduaineEntity.getSysivesik() > 100) {
             return toiduaineRepository.findAll();
         }
         //ToiduaineEntity toiduaine = new ToiduaineEntity(nimi, valk, rasv, sysivesik);
