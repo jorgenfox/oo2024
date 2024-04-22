@@ -12,20 +12,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000/")
 public class RestTemplateController {
 
-    // https://jsonplaceholder.typicode.com/posts
+    //https://jsonplaceholder.typicode.com/posts
     @GetMapping("saa-postitused")
     public List<Post> getPosts() {
 
         RestTemplate restTemplate = new RestTemplate();
         String url = "https://jsonplaceholder.typicode.com/posts";
-        // 1. aadress kuhu, 2. meetod mida teeme (meie teeme alati GET), 3. mida kaasa saadan (Body, Headerid), 4. mis objekti kujuna saame andmed
         ResponseEntity<Post[]> response = restTemplate.exchange(url, HttpMethod.GET, null, Post[].class);
         return List.of(response.getBody());
     }
@@ -35,6 +35,8 @@ public class RestTemplateController {
 
         RestTemplate restTemplate = new RestTemplate();
         String url = "https://jsonplaceholder.typicode.com/posts";
+        // 1. aadress kuhu 2. meetod mida teeme (meie teeme alati GET)
+        // 3. mida kaasa saadan (Body, Headerid)    4. Mis objekti kujuna saame andmed
         ResponseEntity<Post[]> response = restTemplate.exchange(url, HttpMethod.GET, null, Post[].class);
 
         List<Post> kasutajaPostitused = new ArrayList<>();
@@ -42,8 +44,8 @@ public class RestTemplateController {
             if (p.getUserId() == kasutajaId) {
                 kasutajaPostitused.add(p);
             }
-
         }
+
         return kasutajaPostitused;
     }
 
@@ -66,11 +68,12 @@ public class RestTemplateController {
             if (o.getA0_NAME().equals(country)) {
                 omnivaPakiautomaadid.add(o);
             }
-
         }
+
         return omnivaPakiautomaadid;
     }
 
+    // https://dashboard.elering.ee/api/nps/price
     @GetMapping("saa-nordpooli-hinnad")
     public Nordpool getNordpooliHinnad() {
         RestTemplate restTemplate = new RestTemplate();
@@ -79,6 +82,7 @@ public class RestTemplateController {
         return response.getBody();
     }
 
+    // https://dashboard.elering.ee/api/nps/price
     @GetMapping("saa-nordpooli-hinnad/{country}")
     public List<TimestampPrice> getNordpooliHinnadByCountry(@PathVariable String country) {
         RestTemplate restTemplate = new RestTemplate();

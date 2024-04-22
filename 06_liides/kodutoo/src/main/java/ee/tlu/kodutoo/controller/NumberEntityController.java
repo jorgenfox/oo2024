@@ -1,5 +1,7 @@
-package ee.tlu.kodutoo;
+package ee.tlu.kodutoo.controller;
 
+import ee.tlu.kodutoo.entity.NumberEntity;
+import ee.tlu.kodutoo.repository.NumberRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -59,7 +61,7 @@ public class NumberEntityController {
         int sum = 0;
         List<NumberEntity> entities = numberRepository.findAll();
         for (NumberEntity entity : entities) {
-            sum += entity.number;
+            sum += entity.getNumber();
         }
         return sum;
     }

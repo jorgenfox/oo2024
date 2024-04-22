@@ -1,5 +1,6 @@
 package ee.tlu.salat.controller;
 
+
 import ee.tlu.salat.entity.ToiduaineEntity;
 import ee.tlu.salat.repository.ToiduaineRepository;
 import org.springframework.web.bind.annotation.*;
@@ -95,6 +96,32 @@ public class ToiduaineEntityController {
     @GetMapping("toiduainete-koguarv")
     public int toiduaineteKoguarv() {
         return toiduaineRepository.findAll().size();
+    }
+
+
+    // localhost:8080/api/toiduained-valk-min/5
+//    @GetMapping("toiduained-valk-min/{minValk}")
+//    public List<ToiduaineEntity> toiduainedMinValk(@PathVariable int minValk) {
+//       List<ToiduaineEntity> toiduained = toiduaineRepository.findAll();
+//       List<ToiduaineEntity> tingimuseleVastavadToiduained = new ArrayList<>();
+//       for (ToiduaineEntity t: toiduained) {
+//           if (t.valk >= minValk) {
+//               tingimuseleVastavadToiduained.add(t);
+//           }
+//       }
+//       return tingimuseleVastavadToiduained;
+//    }
+
+    // SELECT * FROM Toiduained WHERE valk >= 5;
+
+    @GetMapping("toiduained-valk-min/{minValk}")
+    public List<ToiduaineEntity> toiduainedMinValk(@PathVariable int minValk) {
+        return toiduaineRepository.findAllByValkGreaterThan(minValk);
+    }
+
+    @GetMapping("toiduained-sysivesik/{min}/{max}")
+    public List<ToiduaineEntity> toiduainedSysivesik(@PathVariable int min, @PathVariable int max) {
+        return toiduaineRepository.findAllBySysivesikBetween(min, max);
     }
 
 }

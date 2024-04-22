@@ -1,11 +1,9 @@
-package ee.tlu.kodutoo;
+package ee.tlu.kodutoo.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @AllArgsConstructor
 @Getter
