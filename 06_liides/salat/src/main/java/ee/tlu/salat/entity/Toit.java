@@ -15,9 +15,7 @@ public class Toit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 1,2,3,4,5...
     private Long id;
-
     private String nimetus;
-
     @ManyToMany
     List<Toidukomponent> toidukomponendid;
     // [{"nimi": vorst, kogus: 100g}, {"nimi": hapukoor, kogus: 200g}]
